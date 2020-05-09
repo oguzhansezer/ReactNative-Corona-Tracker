@@ -13,7 +13,7 @@ export default function HomeScreen() {
           <Image
             source={
               __DEV__
-                ? require('../assets/images/robot-dev.png')
+                ? require('../assets/images/home.png')
                 : require('../assets/images/robot-prod.png')
             }
             style={styles.welcomeImage}
@@ -23,29 +23,29 @@ export default function HomeScreen() {
         <View style={styles.getStartedContainer}>
           <DevelopmentModeNotice />
 
-          <Text style={styles.getStartedText}>Open up the code for this screen:</Text>
+          <Text style={styles.getStartedText}>Burada Dünya geneli Toplam sayı yazacak</Text>
 
           <View style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
-            <MonoText>screens/HomeScreen.js</MonoText>
+            <MonoText>Compenentler buraya gelecek</MonoText>
           </View>
 
           <Text style={styles.getStartedText}>
-            Change any of the text, save the file, and your app will automatically reload.
+          Api bağlantısı bekleniyor
           </Text>
         </View>
 
         <View style={styles.helpContainer}>
           <TouchableOpacity onPress={handleHelpPress} style={styles.helpLink}>
-            <Text style={styles.helpLinkText}>Help, it didn’t automatically reload!</Text>
+            <Text style={styles.helpLinkText}>Arayüz geliştirmeleri devam ediyor</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>
 
       <View style={styles.tabBarInfoContainer}>
-        <Text style={styles.tabBarInfoText}>This is a tab bar. You can edit it in:</Text>
+        <Text style={styles.tabBarInfoText}>Footer bilgilendirme Alanı</Text>
 
         <View style={[styles.codeHighlightContainer, styles.navigationFilename]}>
-          <MonoText style={styles.codeHighlightText}>navigation/BottomTabNavigator.js</MonoText>
+          <MonoText style={styles.codeHighlightText}>development için navigation/BottomTabNavigator.js</MonoText>
         </View>
       </View>
     </View>
@@ -66,8 +66,7 @@ function DevelopmentModeNotice() {
 
     return (
       <Text style={styles.developmentModeText}>
-        Development mode is enabled: your app will be slower but you can use useful development
-        tools. {learnMoreButton}
+        Ana Sayfa Dünya geneli verilerin paylaşıldığı alan  
       </Text>
     );
   } else {
