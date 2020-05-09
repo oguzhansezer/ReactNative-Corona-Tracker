@@ -2,7 +2,7 @@ import * as WebBrowser from 'expo-web-browser';
 import * as React from 'react';
 import { Image, Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-
+import GlobalList from '../components/GlobalList'
 import { MonoText } from '../components/StyledText';
 
 export default function HomeScreen() {
@@ -29,7 +29,7 @@ export default function HomeScreen() {
         <View style={styles.getStartedContainer}>
           <DevelopmentModeNotice />
 
-          <Text style={styles.getStartedText}>Burada Dünya geneli Toplam sayı yazacak</Text>
+          <GlobalList/>
 
           <View style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
             <MonoText>Compenentler buraya gelecek</MonoText>
