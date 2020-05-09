@@ -19,6 +19,12 @@ export default function HomeScreen() {
             style={styles.welcomeImage}
           />
         </View>
+        
+        <View> 
+        
+
+        
+        </View>
 
         <View style={styles.getStartedContainer}>
           <DevelopmentModeNotice />

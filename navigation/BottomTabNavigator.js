@@ -20,8 +20,8 @@ export default function BottomTabNavigator({ navigation, route }) {
         name="Home"
         component={HomeScreen}
         options={{
-          title: 'Dünya',
-          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-code-working" />,
+          title: 'Ana Sayfa',
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-home" />,
         }}
       />
       <BottomTab.Screen
@@ -29,7 +29,7 @@ export default function BottomTabNavigator({ navigation, route }) {
         component={LinksScreen}
         options={{
           title: 'Ülkeler',
-          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-book" />,
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-list" />,
         }}
       />
     </BottomTab.Navigator>
