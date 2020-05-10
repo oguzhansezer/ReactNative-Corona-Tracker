@@ -40,7 +40,7 @@ const CountryList = ()=> {
 ]
 const [isLoading, setLoading] = useState(true);
 const [data, setData] = useState([]);
-const [search, setSearch] = useState([])
+const [search = "", setSearch] = useState([])
 const [fullData,setFullData] = useState([])
 
 useEffect(() => {
@@ -49,9 +49,6 @@ useEffect(() => {
     .then((json) => {
       setData(json.Countries)
       setFullData(json.Countries)
-      json.Countries.map(item=>{
-        console.log(item.Countries) 
-      })
     })
     .catch((error) => console.error(error))
     .finally(() => setLoading(false));
@@ -59,7 +56,7 @@ useEffect(() => {
 
 const updateSearch = search => {
   setSearch(search);
-  if(search.length>0) {
+  if(search && search.length && search.length>0) {
     let result = fullData.filter(word => word.Country.indexOf(search) > -1);
     setData(result)
   }
@@ -67,21 +64,28 @@ const updateSearch = search => {
     setData(fullData)
   }
 };  
+const handleOnClearText = () => {
+  if(search != null)
+      search.focus()
+}  
+
 
 
 
   return (
     
     
-       <View>
+       <View style={{}}>
          <SearchBar
-        placeholder="Buraya yazın..."
+        placeholder="Ülke ara..."
         lightTheme={true}
         onChangeText={updateSearch}
         value={search}
-        onClear={updateSearch}
-        containerStyle={{marginBottom:20,padding:0,borderRadius:14}}
-        inputContainerStyle={{backgroundColor:'transparent'}}
+        onClear={handleOnClearText}
+        containerStyle={{marginBottom:20,padding:0,borderRadius:50,marginLeft:10,marginRight:10}}
+        inputContainerStyle={{backgroundColor:'#f2f2f2',paddingLeft:10,borderRadius:14}}
+        cancelButtonTitle="Cancel"
+        
 
       />
        <View style={styles.infoImage}> 
@@ -91,13 +95,18 @@ const updateSearch = search => {
           </View>
 
           <View style={{flexDirection:'row'}}>
-            <Image source={require('../assets/images/healthy.png')} style={styles.ratingImage2}/>
+            <Image source={require('../assets/images/masked.png')} style={styles.ratingImage2}/>
             <Text style={styles.ratingText}>İyileşen</Text>
           </View>
 
           <View style={{flexDirection:'row'}}>
             <Image source={require('../assets/images/coronavirus.png')} style={styles.ratingImage2}/>
             <Text style={styles.ratingText}>Aktif Vaka</Text>
+          </View>
+
+          <View style={{flexDirection:'row'}}>
+            <Image source={require('../assets/images/plus.png')} style={styles.ratingImage2}/>
+            <Text style={styles.ratingText}>Günlük Vaka</Text>
           </View>
 
         </View>
@@ -108,7 +117,7 @@ const updateSearch = search => {
       {isLoading ? <ActivityIndicator/> : (
         
          data.map((item, i) => (
-           <View key={i}>
+           <View key={i} style={{backgroundColor:'#f2f2f2'}}>
           <Text style={styles.contentdivider}>
           </Text>
           <ListItem 
@@ -124,13 +133,19 @@ const updateSearch = search => {
                         </View>
                       
                         <View style={{flexDirection:'row'}}>
-                          <Image source={require('../assets/images/healthy.png')} style={styles.ratingImage2}/>
+                          <Image source={require('../assets/images/masked.png')} style={styles.ratingImage2}/>
                           <Text style={styles.ratingText}>{item.TotalRecovered}</Text>
                         </View>
+
                         <View style={{flexDirection:'row'}}>
                           <Image source={require('../assets/images/coronavirus.png')} style={styles.ratingImage2}/>
                           <Text style={styles.ratingText}>{item.TotalConfirmed}</Text>
                         </View>
+
+                        <View style={{flexDirection:'row'}}>
+                        <Image source={require('../assets/images/plus.png')} style={styles.ratingImage2}/>
+                        <Text style={styles.ratingText}>{item.NewConfirmed}</Text>
+                      </View>
                       
                       </View>
 
@@ -167,14 +182,16 @@ const styles = StyleSheet.create({
     color: 'grey'
   },
   contentdivider: {
-    margin:0
+    margin:0,
+    backgroundColor:'#f2f2f2'
   },
   contentContainer: {
-    borderRadius:25
+    borderRadius:25,
   },
   infoImage: {
     flexDirection: 'row',
-    paddingLeft:18
+    paddingLeft:18,
+    paddingBottom:5
   }
 })
 
