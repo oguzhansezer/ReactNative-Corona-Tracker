@@ -7,7 +7,7 @@ import { MonoText } from '../components/StyledText';
 
 export default function HomeScreen() {
   return (
-    <View style={styles.container,{backgroundColor:'#f2f2f2'}}>
+    <View style={styles.containerHome}>
       <GlobalList/>
     </View>
        
@@ -21,8 +21,9 @@ export default function HomeScreen() {
 
 
 const styles = StyleSheet.create({
-  container: {
+  containerHome: {
     flex: 1,
+    backgroundColor:'#f2f2f2'
   },
   developmentModeText: {
     marginBottom: 20,
